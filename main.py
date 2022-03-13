@@ -1,9 +1,3 @@
-'''
-
-                            Online Python Compiler.
-                Code, Compile, Run and Debug python program online.
-Write your code in this editor and press "Run" button to execute it.
-
 from fastapi import FastAPI
 from pydantic import BaseModel
 
@@ -46,3 +40,9 @@ def create_city(city: City):
 def delete_city(city_id: int):
     db.pop(city_id-1)
     return {}
+    result=[]
+    for city in db:
+        r=requests.get(f'http://worldtimeapi.org/api/timezone/{city["timezone"]}')
+        curent_time=r.json()['datetime']
+        results.append({'name':city['name']
+     return results  
